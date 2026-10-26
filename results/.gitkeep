@@ -1,0 +1,6 @@
+# Results Directory
+
+This directory is populated at runtime by:
+- `src/evaluate.py` → `per_clip.csv`, `summary.json`
+- `src/train.py` → `training_curves.png`
+- `src/analysis.py` → `analysis.json`

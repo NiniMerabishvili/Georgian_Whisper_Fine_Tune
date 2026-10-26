@@ -1,0 +1,30 @@
+# Georgian Whisper Fine-Tune — Python Dependencies
+# Install: pip install -r requirements.txt
+
+# Core ML
+torch>=2.0.0
+transformers>=4.36.0
+datasets>=2.16.0
+accelerate>=0.25.0
+evaluate>=0.4.0
+jiwer>=3.0.0
+
+# Audio
+librosa>=0.10.0
+soundfile>=0.12.0
+
+# Hugging Face Hub
+huggingface-hub>=0.20.0
+
+# Demo
+gradio>=4.0.0
+
+# Config & utilities
+pyyaml>=6.0
+numpy>=1.24.0
+pandas>=2.0.0
+matplotlib>=3.7.0
+tqdm>=4.65.0
+
+# Colab-specific (already installed in Colab, harmless elsewhere)
+# google-colab

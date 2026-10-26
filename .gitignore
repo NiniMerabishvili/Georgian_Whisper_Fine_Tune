@@ -1,0 +1,56 @@
+# --- Large files ---
+*.bin
+*.pt
+*.safetensors
+*.ckpt
+*.h5
+
+# --- Checkpoints & models ---
+checkpoints/
+models/
+runs/
+
+# --- Audio data ---
+*.wav
+*.mp3
+*.flac
+*.ogg
+
+# --- Results (keep templates, ignore generated) ---
+results/per_clip.csv
+results/training_curves.png
+results/summary.json
+
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- Environment ---
+.env
+.venv/
+venv/
+env/
+
+# --- IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Misc ---
+wandb/
+*.log

@@ -1,0 +1,69 @@
+# ============================================================
+# Georgian Whisper Fine-Tune — Configuration
+# ============================================================
+# All hyperparameters and paths in one place.
+# Override any value via environment variables prefixed with WT_
+# (e.g. WT_LEARNING_RATE=2e-5).
+
+# ------ Model ------------------------------------------------
+model:
+  name: "openai/whisper-small"         # HF model hub ID
+  language: "ka"                        # ISO 639-1 for Georgian
+  task: "transcribe"
+
+# ------ Data --------------------------------------------------
+data:
+  dataset: "google/fleurs"             # HF dataset ID
+  subset: "ka_ge"                      # Georgian split
+  max_duration_s: 30.0                 # drop clips longer than this
+  sampling_rate: 16000                 # Whisper expects 16 kHz mono
+  # Optional: Common Voice Georgian (set to null to disable)
+  common_voice:
+    enabled: false
+    dataset: "mozilla-foundation/common_voice_16_1"
+    subset: "ka"
+    max_hours: null                    # null = use all available
+
+# ------ Training ----------------------------------------------
+training:
+  output_dir: "./checkpoints"                           # local fallback
+  drive_output_dir: "/content/drive/MyDrive/whisper-ka-checkpoints"
+  seed: 42
+  num_train_epochs: 10
+  per_device_train_batch_size: 8       # reduced from 16 to fit T4 VRAM
+  per_device_eval_batch_size: 4        # reduced from 8 to fit T4 VRAM
+  gradient_accumulation_steps: 4       # increased to keep effective batch=32
+  learning_rate: 1.0e-5
+  warmup_steps: 500
+  weight_decay: 0.01
+  fp16: true
+  evaluation_strategy: "steps"
+  eval_steps: 500
+  save_strategy: "steps"
+  save_steps: 500
+  save_total_limit: 3
+  load_best_model_at_end: true
+  metric_for_best_model: "wer"
+  greater_is_better: false
+  logging_steps: 50
+  predict_with_generate: true
+  generation_max_length: 225
+  report_to: "none"                    # "wandb" if you want W&B
+  # Wall-clock safety: stop after this many seconds (3.5 h for free Colab)
+  max_wall_clock_s: 12600
+  # Smoke test (preflight)
+  smoke_test_steps: 30
+
+# ------ Evaluation --------------------------------------------
+evaluation:
+  # Text normalization applied to BOTH reference and hypothesis
+  normalization:
+    unicode_nfc: true
+    lowercase: true
+    strip_punctuation: true
+    collapse_whitespace: true
+
+# ------ Demo --------------------------------------------------
+demo:
+  num_precomputed_samples: 10
+  share: false                         # --share for public Gradio link
