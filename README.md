@@ -1,3 +1,6 @@
+Test it: 
+https://eb45f6a556b2471638.gradio.live/
+
 # 🇬🇪 Georgian Whisper Fine-Tune
 
 Fine-tuning a pretrained **Whisper-small** model for Georgian speech recognition, with a reproducible evaluation and a side-by-side demo.
