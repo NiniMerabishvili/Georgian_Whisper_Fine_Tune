@@ -1,5 +1,8 @@
-Test it: 
-https://eb45f6a556b2471638.gradio.live/
+Demo Video:
+
+https://github.com/user-attachments/assets/71f9688e-512b-44f2-a748-ea4ee59e37c1
+
+
 
 # 🇬🇪 Georgian Whisper Fine-Tune
 
